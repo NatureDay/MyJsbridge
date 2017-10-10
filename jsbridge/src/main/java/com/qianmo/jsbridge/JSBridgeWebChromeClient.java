@@ -3,6 +3,7 @@ package com.qianmo.jsbridge;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
+import android.webkit.ConsoleMessage;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
@@ -61,6 +62,12 @@ public class JSBridgeWebChromeClient extends WebChromeClient {
         Log.e("fff", "---------onJsPrompt==========result=====" + result.toString());
         result.confirm(JSBridge.callJava(view, message));
         return true;
+    }
+
+    @Override
+    public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+        Log.e("fff","------------consoleMessage===" + consoleMessage.message());
+        return super.onConsoleMessage(consoleMessage);
     }
 
     public String readAssertResource(Context context, String strAssertFileName) {
