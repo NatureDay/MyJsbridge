@@ -18,7 +18,6 @@
          * @param callback              回调
          */
         doCall: function (className, methodName, params, callback) {
-            // 解决连续调用问题
             var _this = this;
             if (this.lastCallTime && (Date.now() - this.lastCallTime) < 100) {
                 setTimeout(function () {

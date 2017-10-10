@@ -26,10 +26,14 @@ public class JSBridgeWebChromeClient extends WebChromeClient {
 
     @Override
     public void onProgressChanged(WebView view, int newProgress) {
+        Log.e("fff", "---------onProgressChanged==========url===111==");
         if (mIsInjectedJS) return;
+        Log.e("fff", "---------onProgressChanged==========url===222==");
         if (newProgress > 25) {
+            Log.e("fff", "---------onProgressChanged==========url===333==");
             mIsInjectedJS = true;
             String jsContent = readAssertResource(view.getContext(), JS_PATH);
+            Log.e("fff", "---------onProgressChanged=========jsContent==" + jsContent);
             view.loadUrl("javascript:" + jsContent);
         }
         super.onProgressChanged(view, newProgress);
