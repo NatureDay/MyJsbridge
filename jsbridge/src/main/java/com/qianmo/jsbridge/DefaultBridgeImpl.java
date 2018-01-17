@@ -12,7 +12,11 @@ import org.json.JSONObject;
  */
 public class DefaultBridgeImpl implements IBridge {
 
-    public static void showToast(JSONObject param, final Callback callback) {
+    private static final String CODE = "code";
+    private static final String DATA = "data";
+    private static final String MESSAGE = "msg";
+
+    public static void showToast(JSONObject param, Callback callback) {
         Log.e("fff", "---------showToast----------");
         if (param != null) {
             String message = param.optString("msg");
@@ -30,12 +34,12 @@ public class DefaultBridgeImpl implements IBridge {
         }
     }
 
-    private static JSONObject getJSONObject(int code, String msg, JSONObject result) {
+    private static JSONObject getJSONObject(int code, String msg, JSONObject data) {
         JSONObject object = new JSONObject();
         try {
-            object.put("code", code);
-            object.put("msg", msg);
-            object.putOpt("result", result);
+            object.put(CODE, code);
+            object.put(MESSAGE, msg);
+            object.putOpt(DATA, data);
             return object;
         } catch (JSONException e) {
             e.printStackTrace();
