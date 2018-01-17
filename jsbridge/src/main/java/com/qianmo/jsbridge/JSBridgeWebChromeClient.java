@@ -66,7 +66,7 @@ public class JSBridgeWebChromeClient extends WebChromeClient {
 
     @Override
     public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-        Log.e("fff","------------consoleMessage===" + consoleMessage.message());
+        Log.e("fff", "[(" + consoleMessage.messageLevel() + ") source：" + consoleMessage.sourceId() + " (" + consoleMessage.lineNumber() + ")] " + consoleMessage.message());
         return super.onConsoleMessage(consoleMessage);
     }
 
