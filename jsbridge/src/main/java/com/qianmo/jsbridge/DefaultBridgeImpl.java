@@ -1,6 +1,7 @@
 package com.qianmo.jsbridge;
 
 import android.util.Log;
+import android.webkit.WebView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,8 +17,9 @@ public class DefaultBridgeImpl implements IBridge {
     private static final String DATA = "data";
     private static final String MESSAGE = "msg";
 
-    public static void showToast(JSONObject param, Callback callback) {
+    public static void showToast(WebView webView, JSONObject param, Callback callback) {
         Log.e("fff", "---------showToast----------");
+        Log.e("fff", "---------showToast-----webView==" + webView);
         if (param != null) {
             String message = param.optString("msg");
             Log.e("fff", "---------showToast-----message==" + message);

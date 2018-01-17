@@ -71,11 +71,11 @@ public class JSBridge {
                     if (method != null) {
                         try {
                             if (TextUtils.isEmpty(callbackId)) {
-                                method.invoke(null, params, null);
+                                method.invoke(null, webView,params, null);
                                 if (TextUtils.isEmpty(message))
                                     return "android js call success";
                             } else {
-                                method.invoke(null, params, new Callback(webView, callbackId));
+                                method.invoke(null, webView,params, new Callback(webView, callbackId));
                                 if (TextUtils.isEmpty(message))
                                     return "android js call success";
                             }
