@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
+import com.qianmo.jsbridge.DefaultBridgeImpl;
 import com.qianmo.jsbridge.JSBridge;
 import com.qianmo.jsbridge.JSBridgeWebChromeClient;
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         mWebView.getSettings().setJavaScriptEnabled(true);
 
-        JSBridge.register("bridge", BridgeImpl.class);
+        JSBridge.register("DefaultBridgeImpl", DefaultBridgeImpl.class);
         mWebView.setWebChromeClient(new JSBridgeWebChromeClient());
 
         mWebView.loadUrl("file:///android_asset/index.html");

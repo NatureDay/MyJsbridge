@@ -26,6 +26,8 @@ public class JSBridge {
     private static final String PARAMS = "javaParams";
     private static final String CALLBACKID = "javaCallbackId";
 
+    private static final String DEFAULT_CLASS = "DefaultBridgeImpl";
+
     private static Map<String, HashMap<String, Method>> exposedMethods = new HashMap<>();
 
     public static void register(String exposedName, Class<? extends IBridge> clazz) {
@@ -72,10 +74,12 @@ public class JSBridge {
                         try {
                             if (TextUtils.isEmpty(callbackId)) {
                                 method.invoke(null, params, null);
-                                if (TextUtils.isEmpty(message)) return "android js call success";
+                                if (TextUtils.isEmpty(message))
+                                    return "android js call success";
                             } else {
                                 method.invoke(null, params, new Callback(webView, callbackId));
-                                if (TextUtils.isEmpty(message)) return "android js call success";
+                                if (TextUtils.isEmpty(message))
+                                    return "android js call success";
                             }
                         } catch (Exception e) {
                             Log.e(TAG, "---------callJava fail!!!----------");

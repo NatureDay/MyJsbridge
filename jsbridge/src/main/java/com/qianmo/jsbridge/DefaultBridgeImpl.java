@@ -1,11 +1,6 @@
-package com.example.administrator.myapplication;
+package com.qianmo.jsbridge;
 
 import android.util.Log;
-import android.webkit.WebView;
-import android.widget.Toast;
-
-import com.qianmo.jsbridge.Callback;
-import com.qianmo.jsbridge.IBridge;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,7 +10,7 @@ import org.json.JSONObject;
  * Author: daiyuanhong
  * Time:   2017/9/26 16:46
  */
-public class BridgeImpl implements IBridge {
+public class DefaultBridgeImpl implements IBridge {
 
     public static void showToast(JSONObject param, final Callback callback) {
         Log.e("fff", "---------showToast----------");
