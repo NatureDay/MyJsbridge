@@ -26,8 +26,6 @@ public class JSBridge {
     private static final String PARAMS = "javaParams";
     private static final String CALLBACKID = "javaCallbackId";
 
-    private static final String DEFAULT_CLASS = "DefaultBridgeImpl";
-
     private static Map<String, HashMap<String, Method>> exposedMethods = new HashMap<>();
 
     public static void register(String exposedName, Class<? extends IBridge> clazz) {

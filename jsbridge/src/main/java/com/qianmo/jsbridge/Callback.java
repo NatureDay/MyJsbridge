@@ -11,19 +11,19 @@ import java.lang.ref.WeakReference;
  * Author: daiyuanhong
  * Time:   2017/9/26 16:45
  */
-public class Callback {
+class Callback {
 
     private static final String CALLBACK_JS_FORMAT = "javascript:androidBridge.callback('%s', %s);";
 
     private String mCallbackId;
     private WeakReference<WebView> mWebViewRef;
 
-    public Callback(WebView view, String callbackId) {
+    Callback(WebView view, String callbackId) {
         mWebViewRef = new WeakReference<>(view);
         mCallbackId = callbackId;
     }
 
-    public void apply(JSONObject jsonObject) {
+    void apply(JSONObject jsonObject) {
         final String execJs = String.format(CALLBACK_JS_FORMAT, mCallbackId, jsonObject.toString());
         if (mWebViewRef != null && mWebViewRef.get() != null) {
             mWebViewRef.get().loadUrl(execJs);
